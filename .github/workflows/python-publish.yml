@@ -22,6 +22,13 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install setuptools wheel twine
+    - name: Bump version
+      run: |
+        pip install bump2version==1.0.1
+        bump2version --new-version ${GITHUB_REF#refs/*/v} patch
+        # must supply either patch minor or major see https://github.com/c4urself/bump2version/issues/244
+        # but it's ignored as an argument anyway
+        echo ${GITHUB_REF#refs/*/v}
     - name: Build and publish
       env:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
