@@ -29,4 +29,4 @@ jobs:
         # must supply either patch minor or major see https://github.com/c4urself/bump2version/issues/244
         # but it's an ignored argument argument
         git show
-        git push
+        git push origin HEAD
